@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Notion to PDF",
+  "version": "1.0",
+  "description": "Notion to PDF",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.notion.so/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.notion.so/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["html2pdf.bundle.min.js"],
+      "matches": ["https://www.notion.so/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
